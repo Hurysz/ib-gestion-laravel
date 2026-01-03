@@ -41,3 +41,5 @@ Instalacion y Ejecucion
     Instalar y compilar dependencias de Frontend: npm install && npm run dev
 
     Iniciar el servidor local: php artisan serve
+
+GRACIAS.
