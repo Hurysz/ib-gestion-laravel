@@ -3,11 +3,7 @@
 @section('content')
     <h1>Inventario de Productos - IB CORP</h1>
     <a href="{{ route('productos.create') }}" style="background: #28a745; color: white; padding: 5px 10px; text-decoration: none; border-radius: 3px;">+ Agregar Nuevo Producto</a>
-
-    @if(session('success'))
-        <p class="alert-success">{{ session('success') }}</p>
-    @endif
-
+s
     <table border="1" style="width: 100%; margin-top: 15px; border-collapse: collapse;">
         <thead style="background: #eee;">
             <tr>
