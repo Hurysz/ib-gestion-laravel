@@ -1,33 +1,48 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Editar Producto: {{ $producto->nombre }}</h1>
-    <a href="{{ route('productos.index') }}">← Volver al listado</a>
+    <div class="md:flex md:items-center md:justify-between mb-8">
+        <h2 class="text-2xl font-black text-white uppercase tracking-widest">Editar Producto: {{ $producto->nombre }}</h2>
+        <a href="{{ route('productos.index') }}" class="text-sm font-bold text-slate-400 hover:text-[#4a90e2] transition">
+            ← Volver al listado
+        </a>
+    </div>
 
-    <form action="{{ route('productos.update', $producto->id) }}" method="POST" style="margin-top: 20px;">
-        @csrf
-        @method('PUT') <div>
-            <label>Nombre:</label><br>
-            <input type="text" name="nombre" value="{{ $producto->nombre }}" required>
-        </div><br>
+    <div class="bg-[#162a52] shadow-2xl overflow-hidden sm:rounded-2xl border border-slate-700 p-10 max-w-2xl mx-auto">
+        <form action="{{ route('productos.update', $producto->id) }}" method="POST" class="space-y-8">
+            @csrf
+            @method('PUT')
+            
+            <div>
+                <label class="block text-xs font-black text-slate-400 uppercase tracking-widest mb-2">Nombre del Producto</label>
+                <input type="text" name="nombre" value="{{ $producto->nombre }}" required 
+                       class="block w-full bg-[#0D1B38] border-slate-600 rounded-xl shadow-sm focus:border-[#4a90e2] focus:ring-[#4a90e2] text-white transition py-3">
+            </div>
 
-        <div>
-            <label>Descripción:</label><br>
-            <textarea name="descripcion" required>{{ $producto->descripcion }}</textarea>
-        </div><br>
+            <div>
+                <label class="block text-xs font-black text-slate-400 uppercase tracking-widest mb-2">Descripción</label>
+                <textarea name="descripcion" rows="4" required
+                          class="block w-full bg-[#0D1B38] border-slate-600 rounded-xl shadow-sm focus:border-[#4a90e2] focus:ring-[#4a90e2] text-white transition">{{ $producto->descripcion }}</textarea>
+            </div>
 
-        <div>
-            <label>Precio:</label><br>
-            <input type="number" name="precio" step="0.01" value="{{ $producto->precio }}" required>
-        </div><br>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label class="block text-xs font-black text-slate-400 uppercase tracking-widest mb-2">Precio (S/)</label>
+                    <input type="number" name="precio" step="0.01" value="{{ $producto->precio }}" required
+                           class="block w-full bg-[#0D1B38] border-slate-600 rounded-xl shadow-sm focus:border-[#4a90e2] focus:ring-[#4a90e2] text-white transition py-3">
+                </div>
+                <div>
+                    <label class="block text-xs font-black text-slate-400 uppercase tracking-widest mb-2">Stock Actual</label>
+                    <input type="number" name="stock" value="{{ $producto->stock }}" required
+                           class="block w-full bg-[#0D1B38] border-slate-600 rounded-xl shadow-sm focus:border-[#4a90e2] focus:ring-[#4a90e2] text-white transition py-3">
+                </div>
+            </div>
 
-        <div>
-            <label>Stock:</label><br>
-            <input type="number" name="stock" value="{{ $producto->stock }}" required>
-        </div><br>
-
-        <button type="submit" style="background: #ffc107; color: black; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">
-            Actualizar Información
-        </button>
-    </form>
+            <div class="pt-4">
+                <button type="submit" class="w-full inline-flex justify-center py-4 px-6 border border-transparent shadow-xl text-xs font-black rounded-xl text-white bg-amber-500 hover:bg-amber-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 transition uppercase tracking-widest">
+                    Actualizar Información
+                </button>
+            </div>
+        </form>
+    </div>
 @endsection

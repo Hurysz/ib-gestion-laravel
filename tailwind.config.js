@@ -11,9 +11,10 @@ export default {
 
     theme: {
         extend: {
-            fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
-            },
+            colors: {
+                'ib-navy': '#0D1B38',
+                'ib-blue': '#4a90e2',
+            }
         },
     },
 
